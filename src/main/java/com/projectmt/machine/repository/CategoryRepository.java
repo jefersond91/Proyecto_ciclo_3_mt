@@ -1,6 +1,6 @@
 package com.projectmt.machine.repository;
 
-import com.projectmt.machine.entity.Machine;
+import com.projectmt.machine.entity.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

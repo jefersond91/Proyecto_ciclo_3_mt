@@ -1,14 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.projectmt.machine.repository;
+
+import com.projectmt.machine.entity.Score;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
  * @author Jeferson
  */
-public interface ScoreRepository {
+public interface ScoreRepository extends JpaRepository<Score, Long> {
     
 }

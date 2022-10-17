@@ -1,12 +1,12 @@
 package com.projectmt.machine.repository;
 
-import com.projectmt.machine.entity.Message;
+import com.projectmt.machine.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
  * @author Jeferson
  */
-public interface MessageRepository extends JpaRepository<Message, Long> {
+public interface UserRepository extends JpaRepository<User, Integer> {
     
 }

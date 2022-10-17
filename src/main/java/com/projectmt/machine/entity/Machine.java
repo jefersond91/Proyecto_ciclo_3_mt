@@ -46,7 +46,7 @@ public class Machine implements Serializable {
 
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "machine")
     @JsonIgnoreProperties({"machine", "messages"})
-    public List<Reservation> reservations;
+    private List<Reservation> reservations;
 
     /**
      * @return the id
@@ -91,20 +91,6 @@ public class Machine implements Serializable {
     }
 
     /**
-     * @return the category
-     */
-    public Long getCategory() {
-        return category;
-    }
-
-    /**
-     * @param category the category to set
-     */
-    public void setCategory(Long category) {
-        this.category = category;
-    }
-
-    /**
      * @return the name
      */
     public String getName() {
@@ -132,4 +118,47 @@ public class Machine implements Serializable {
         this.description = description;
     }
 
+    /**
+     * @return the category
+     */
+    public Category getCategory() {
+        return category;
+    }
+
+    /**
+     * @param category the category to set
+     */
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    /**
+     * @return the messages
+     */
+    public List<Message> getMessages() {
+        return messages;
+    }
+
+    /**
+     * @param messages the messages to set
+     */
+    public void setMessages(List<Message> messages) {
+        this.messages = messages;
+    }
+
+    /**
+     * @return the reservations
+     */
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
+
+    /**
+     * @param reservations the reservations to set
+     */
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
+    }
+
+    
 }

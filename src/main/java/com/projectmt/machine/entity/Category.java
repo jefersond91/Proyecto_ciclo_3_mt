@@ -72,11 +72,19 @@ public class Category implements Serializable{
         this.description = description;
     }
 
+    /**
+     * @return the machines
+     */
     public List<Machine> getMachines() {
         return machines;
     }
 
+    /**
+     * @param machines the machines to set
+     */
     public void setMachines(List<Machine> machines) {
         this.machines = machines;
     }
+
+    
 }

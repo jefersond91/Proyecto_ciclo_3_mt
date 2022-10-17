@@ -1,7 +1,7 @@
 package com.projectmt.machine.controller;
 
-import com.projectmt.machine.entity.Message;
-import com.projectmt.machine.service.MessageService;
+import com.projectmt.machine.entity.User;
+import com.projectmt.machine.service.UserService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,40 +20,39 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Jeferson
  */
 @RestController
-@RequestMapping("/Message")
+@RequestMapping("/User")
 @CrossOrigin(origins = "*")
-public class MessageController {
-
+public class UserController {
     @Autowired
-    private MessageService messageService;
-
+    private UserService userService;
     @GetMapping("/all")
-    public List<Message> getMessage() {
-        return messageService.getMessage();
+    public List<User> getUser(){
+        return userService.getUser();
     }
-
+    
     @PostMapping("/save")
-    public ResponseEntity insertMessage(@RequestBody Message message) {
-        messageService.insertMessage(message);
-        return ResponseEntity.status(201).build();
+    public ResponseEntity insertUser(@RequestBody User user){
+       userService.insertUser(user);
+       return ResponseEntity.status(201).build();
     }
-
+    
     @GetMapping("/{id}")
-    public Message getMessageById(@PathVariable("id") Long id) {
-        return messageService.getMessageById(id);
+    public User getUserById(@PathVariable("id") Integer id){
+        return userService.getUserById(id);
     }
-
+    
     //Metodo para eliminar (Capa de controlador)
     @DeleteMapping("/{id}")
-    public ResponseEntity deleteMessage(@PathVariable("id") Long id) {
-        messageService.deleteMessage(id);
-        return ResponseEntity.status(204).build();
+    public ResponseEntity deleteUser(@PathVariable("id") Integer id){
+       userService.deleteUser(id);
+       return ResponseEntity.status(204).build();
     }
     
     //Metodo para actualizar (Capa de controlador)
     @PutMapping("/update")
-    public ResponseEntity updateMessage(@RequestBody Message message){
-       messageService.updateMessage(message);
+    public ResponseEntity updateUser(@RequestBody User category){
+       userService.updateUser(category);
        return ResponseEntity.status(201).build(); 
     }
+    
 }
