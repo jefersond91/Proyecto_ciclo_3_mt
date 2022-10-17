@@ -1,11 +1,18 @@
 package com.projectmt.machine.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.List;
 
 /**
  *
@@ -13,33 +20,45 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="machine")
-public class Machine {
+public class Machine implements Serializable {
+    
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     @Column(name="brand", nullable = false, length = 45)
     private String brand;
     @Column(name="year", nullable = false)
-    private long year;
-    @Column(name="category", nullable = false)
-    private long category;
+    private Long year;
     @Column(name="name", nullable = false, length = 45)
     private String name;
     @Column(name="description", nullable = false, length = 250)
     private String description;
+    
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    @JsonIgnoreProperties("machines")
+    private Category category;
+    
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "machine")
+    @JsonIgnoreProperties({"machine", "client"})
+    private List<Message> messages;
+
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "machine")
+    @JsonIgnoreProperties({"machine", "messages"})
+    public List<Reservation> reservations;
 
     /**
      * @return the id
      */
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
     /**
      * @param id the id to set
      */
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -60,28 +79,28 @@ public class Machine {
     /**
      * @return the year
      */
-    public long getYear() {
+    public Long getYear() {
         return year;
     }
 
     /**
      * @param year the year to set
      */
-    public void setYear(long year) {
+    public void setYear(Long year) {
         this.year = year;
     }
 
     /**
      * @return the category
      */
-    public long getCategory() {
+    public Long getCategory() {
         return category;
     }
 
     /**
      * @param category the category to set
      */
-    public void setCategory(long category) {
+    public void setCategory(Long category) {
         this.category = category;
     }
 
