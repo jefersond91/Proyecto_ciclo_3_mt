@@ -77,16 +77,16 @@ public class Machine implements Serializable {
     }
 
     /**
-     * @return the year
+     * @return the years
      */
     public Long getYear() {
         return year;
     }
 
     /**
-     * @param year the year to set
+     * @param years the years to set
      */
-    public void setYear(Long year) {
+    public void setYear(Long years) {
         this.year = year;
     }
 
@@ -159,6 +159,6 @@ public class Machine implements Serializable {
     public void setReservations(List<Reservation> reservations) {
         this.reservations = reservations;
     }
-
+    
     
 }
